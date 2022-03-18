@@ -16,6 +16,18 @@ import com.azure.android.communication.ui.redux.state.CameraOperationalStatus
 import com.azure.android.communication.ui.redux.state.PermissionStatus
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import androidx.core.content.ContextCompat.getSystemService
+
+import android.content.DialogInterface
+
+import android.widget.Toast
+
+import android.app.AlertDialog
+import android.view.inputmethod.InputMethodManager
+
+import android.widget.EditText
+import androidx.core.content.ContextCompat
+
 
 internal class ControlBarView : LinearLayout {
     constructor(context: Context) : super(context)
@@ -25,6 +37,7 @@ internal class ControlBarView : LinearLayout {
     private lateinit var endCallButton: ImageButton
     private lateinit var cameraToggle: ImageButton
     private lateinit var micToggle: ImageButton
+    private lateinit var speakText: ImageButton
     private lateinit var callAudioDeviceButton: ImageButton
     private lateinit var requestCallEndCallback: () -> Unit
     private lateinit var openAudioDeviceSelectionMenuCallback: () -> Unit
@@ -33,6 +46,7 @@ internal class ControlBarView : LinearLayout {
         super.onFinishInflate()
         endCallButton = findViewById(R.id.azure_communication_ui_call_end_call_button)
         cameraToggle = findViewById(R.id.azure_communication_ui_call_cameraToggle)
+        speakText = findViewById(R.id.azure_communication_ui_call_speakText)
         micToggle = findViewById(R.id.azure_communication_ui_call_call_audio)
         callAudioDeviceButton = findViewById(R.id.azure_communication_ui_call_audio_device_button)
         subscribeClickListener()
@@ -165,6 +179,42 @@ internal class ControlBarView : LinearLayout {
                 viewModel.turnMicOn()
             }
         }
+        speakText.setOnClickListener {
+            //viewModel.
+            val builder = AlertDialog.Builder(context)
+            val input = EditText(context)
+            builder
+                .setTitle(com.azure.android.communication.ui.R.string.app_name)
+                .setMessage(com.azure.android.communication.ui.R.string.azure_communication_ui_calling_view_banner_recording_started)
+                .setView(input)
+                .setPositiveButton(android.R.string.ok,
+                    DialogInterface.OnClickListener { dialog, which ->
+                        val value = input.text.toString()
+                        if (input.text.toString().trim { it <= ' ' }.isEmpty()) {
+                            Toast.makeText(context, com.azure.android.communication.ui.R.string.azure_communication_ui_cal_state_error_call_end, Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+//                            db.insertSubject(value)
+//                            getData()
+                        }
+                        val imm: InputMethodManager? =
+                            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                        imm?.hideSoftInputFromWindow(input.windowToken, 0)
+                    })
+                .setNegativeButton(android.R.string.cancel,
+                    DialogInterface.OnClickListener { dialog, which ->
+                        val imm: InputMethodManager? =
+                            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                        imm?.hideSoftInputFromWindow(input.windowToken, 0)
+                    })
+
+            builder.show()
+            input.requestFocus()
+            val imm: InputMethodManager? =
+                context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+            imm?.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+        }
+
         cameraToggle.setOnClickListener {
             if (cameraToggle.isSelected) {
                 viewModel.turnCameraOff()

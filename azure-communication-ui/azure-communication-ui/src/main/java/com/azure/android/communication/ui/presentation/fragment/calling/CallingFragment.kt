@@ -64,6 +64,7 @@ internal class CallingFragment :
 
         controlBarView = view.findViewById(R.id.azure_communication_ui_call_call_buttons)
         controlBarView.start(
+            //Will pass in the db reference here to make the change on the control bar view file
             viewLifecycleOwner,
             viewModel.getControlBarViewModel(),
             this::requestCallEnd,
