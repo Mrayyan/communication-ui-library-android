@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable
 import android.media.AudioManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
@@ -28,13 +29,31 @@ import com.azure.android.communication.ui.presentation.fragment.setup.SetupFragm
 import com.azure.android.communication.ui.presentation.navigation.BackNavigation
 import com.azure.android.communication.ui.redux.action.CallingAction
 import com.azure.android.communication.ui.redux.state.NavigationStatus
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.microsoft.fluentui.util.activity
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.Locale
+import android.speech.tts.TextToSpeech
+
+import android.widget.Toast
+
+import android.R.string.no
+import android.content.Context
+import android.speech.tts.TextToSpeech.OnInitListener
+import com.azure.android.communication.ui.model.UserSpeechObject
+import com.azure.android.communication.ui.redux.state.CallingState
+import com.azure.android.communication.ui.redux.state.CallingStatus
+
 
 internal class CallCompositeActivity : AppCompatActivity() {
 
+    private lateinit var textToSpeech: TextToSpeech
     private val diContainerHolder: DependencyInjectionContainerHolder by viewModels()
     private val container by lazy { diContainerHolder.container }
 
@@ -74,6 +93,49 @@ internal class CallCompositeActivity : AppCompatActivity() {
         configureLocalization()
         setStatusBarColor()
         setActionBarVisibility()
+
+        FirebaseApp.initializeApp(this@CallCompositeActivity)
+
+
+        textToSpeech = TextToSpeech(applicationContext) { status ->
+            if (status != TextToSpeech.ERROR) {
+                textToSpeech.language = Locale.CANADA
+            }
+        }
+
+        val database = Firebase.database
+        val myRef = database.reference
+
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val latestTextToSpeechUserMessage = dataSnapshot.children.last()
+
+                Log.i("fire", "what is this ??? e -> " + dataSnapshot.children.last())
+
+                var textToSpeak = ""
+                textToSpeak =
+                    if (latestTextToSpeechUserMessage.child("displayName").value.toString().isBlank()){
+                        "Unnamed participant says " + latestTextToSpeechUserMessage.child("voiceMessage").value.toString()
+
+                    } else {
+                        latestTextToSpeechUserMessage.child("displayName").value.toString() + " says " + latestTextToSpeechUserMessage.child(
+                            "voiceMessage").value.toString()
+                    }
+
+
+                    if (store.getCurrentState().callState.callingStatus == CallingStatus.CONNECTED) {
+                        textToSpeech.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null, "")
+                        Toast.makeText(applicationContext, textToSpeak, Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.i("fire", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        myRef.addValueEventListener(postListener)
 
         if (configuration.themeConfig?.theme != null) {
             theme.applyStyle(
@@ -122,6 +184,14 @@ internal class CallCompositeActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onPause() {
+        textToSpeech.stop()
+        textToSpeech.shutdown()
+
+        super.onPause()
+
     }
 
     override fun onStop() {

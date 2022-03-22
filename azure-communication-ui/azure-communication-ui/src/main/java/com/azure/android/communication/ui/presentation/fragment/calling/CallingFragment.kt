@@ -67,6 +67,7 @@ internal class CallingFragment :
             //Will pass in the db reference here to make the change on the control bar view file
             viewLifecycleOwner,
             viewModel.getControlBarViewModel(),
+            viewModel.getLocalParticipantViewModel(),
             this::requestCallEnd,
             this::openAudioDeviceSelectionMenu
         )

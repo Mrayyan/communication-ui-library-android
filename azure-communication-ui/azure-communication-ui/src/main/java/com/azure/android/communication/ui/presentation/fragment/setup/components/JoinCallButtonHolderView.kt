@@ -3,6 +3,7 @@
 
 package com.azure.android.communication.ui.presentation.fragment.setup.components
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.Button
@@ -41,6 +42,7 @@ internal class JoinCallButtonHolderView : ConstraintLayout {
         )
     }
 
+    @SuppressLint("ApplySharedPref")
     fun start(
         viewLifecycleOwner: LifecycleOwner,
         viewModel: JoinCallButtonHolderViewModel,

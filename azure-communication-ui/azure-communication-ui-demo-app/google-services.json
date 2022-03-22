@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1031948540789",
+    "project_id": "acs-sample-app",
+    "storage_bucket": "acs-sample-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031948540789:android:d9e5a1653c733cbf1a913c",
+        "android_client_info": {
+          "package_name": "com.azure.android.communication.ui.callingCompositeDemoApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031948540789-lkmvdsccfvm0eqp3slnqnoc5aus8vv63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL5qeqDW9O-OyV1EPhTnlHmYSGo5lxOP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031948540789-lkmvdsccfvm0eqp3slnqnoc5aus8vv63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

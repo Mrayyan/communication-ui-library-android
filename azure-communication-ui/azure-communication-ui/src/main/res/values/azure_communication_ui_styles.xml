@@ -7,4 +7,10 @@
     <style name="AzureCommunicationUICalling.ButtonText" parent="TextAppearance.FluentUI.Button">
         <item name="textAllCaps">false</item>
     </style>
+
+
+    <style name="AzureCommunicationUICalling.AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:textColor">@color/azure_communication_ui_color_transparent_background</item>
+        <item name="android:textColorPrimary">@color/azure_communication_ui_color_transparent_background</item>
+    </style>
 </resources>

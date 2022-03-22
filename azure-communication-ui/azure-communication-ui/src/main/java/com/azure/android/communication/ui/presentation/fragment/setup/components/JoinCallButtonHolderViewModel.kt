@@ -26,6 +26,7 @@ internal class JoinCallButtonHolderViewModel(
 
     fun launchCallScreen() {
         dispatch(CallingAction.CallStartRequested())
+
         disableJoinCallButtonFlow.value = true
     }
 

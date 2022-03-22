@@ -46,6 +46,11 @@
     <string name="azure_communication_ui_calling_view_button_toggle_audio_accessibility_label">Toggle Audio</string>
     <string name="azure_communication_ui_calling_view_button_device_options_accessibility_label">Device Options</string>
 
+    <!-- Text to Speech View -->
+    <string name="azure_communication_ui_text_to_speech" translatable="false">Text to Speech</string>
+    <string name="azure_communication_ui_text_to_speech_desc" translatable="false">Write a message to be delivered to others in the call as a voice message.</string>
+
+
     <!--    Compliance Banner-->
     <string name="azure_communication_ui_calling_view_banner_recording_started"><b>Recording has started.</b> By joining, you are
         giving consent for this meeting to be transcribed.

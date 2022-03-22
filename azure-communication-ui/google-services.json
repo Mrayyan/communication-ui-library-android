@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "493184223573",
+    "project_id": "acs-ui-library",
+    "storage_bucket": "acs-ui-library.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493184223573:android:273eb66c457a6aac2cc7dc",
+        "android_client_info": {
+          "package_name": "com.azure.android.communication.ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493184223573-1gai2vqtffe0k60v6ic6j53r0iovo2g9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXdPkdMoQNCVZU0dwB4MrYVgYBfAAFoXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493184223573-1gai2vqtffe0k60v6ic6j53r0iovo2g9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

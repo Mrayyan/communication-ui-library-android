@@ -23,16 +23,29 @@ import android.content.DialogInterface
 import android.widget.Toast
 
 import android.app.AlertDialog
+import android.provider.Settings.System.getString
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.inputmethod.InputMethodManager
 
 import android.widget.EditText
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
+import com.azure.android.communication.ui.model.UserSpeechObject
+import com.azure.android.communication.ui.presentation.fragment.calling.localuser.LocalParticipantViewModel
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 
 
 internal class ControlBarView : LinearLayout {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
+    private lateinit var mUserDisplayName: String
     private lateinit var viewModel: ControlBarViewModel
     private lateinit var endCallButton: ImageButton
     private lateinit var cameraToggle: ImageButton
@@ -55,12 +68,15 @@ internal class ControlBarView : LinearLayout {
     fun start(
         viewLifecycleOwner: LifecycleOwner,
         viewModel: ControlBarViewModel,
+        viewModelLocalParticipant: LocalParticipantViewModel,
         requestCallEnd: () -> Unit,
         openAudioDeviceSelectionMenu: () -> Unit,
     ) {
         this.viewModel = viewModel
         this.requestCallEndCallback = requestCallEnd
         this.openAudioDeviceSelectionMenuCallback = openAudioDeviceSelectionMenu
+
+
 
         setupAccessibility()
         viewLifecycleOwner.lifecycleScope.launch {
@@ -78,6 +94,14 @@ internal class ControlBarView : LinearLayout {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getAudioDeviceSelectionStatusStateFlow().collect {
                 setAudioDeviceButtonState(it)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModelLocalParticipant.getDisplayNameStateFlow().collect {
+                if (it != null) {
+                    mUserDisplayName = it
+                }
             }
         }
 
@@ -180,27 +204,37 @@ internal class ControlBarView : LinearLayout {
             }
         }
         speakText.setOnClickListener {
-            //viewModel.
-            val builder = AlertDialog.Builder(context)
+            val builder = AlertDialog.Builder(context, R.style.AzureCommunicationUICalling_AlertDialog)
             val input = EditText(context)
+            input.setTextColor(getColor(context, R.color.azure_communication_ui_color_transparent_background))
+
+
             builder
-                .setTitle(com.azure.android.communication.ui.R.string.app_name)
-                .setMessage(com.azure.android.communication.ui.R.string.azure_communication_ui_calling_view_banner_recording_started)
+                .setTitle(context.resources.getString(R.string.azure_communication_ui_text_to_speech))
+                .setMessage(context.resources.getString(R.string.azure_communication_ui_text_to_speech_desc))
                 .setView(input)
-                .setPositiveButton(android.R.string.ok,
-                    DialogInterface.OnClickListener { dialog, which ->
-                        val value = input.text.toString()
-                        if (input.text.toString().trim { it <= ' ' }.isEmpty()) {
-                            Toast.makeText(context, com.azure.android.communication.ui.R.string.azure_communication_ui_cal_state_error_call_end, Toast.LENGTH_SHORT)
-                                .show()
-                        } else {
-//                            db.insertSubject(value)
-//                            getData()
-                        }
-                        val imm: InputMethodManager? =
-                            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-                        imm?.hideSoftInputFromWindow(input.windowToken, 0)
-                    })
+                .setPositiveButton(android.R.string.ok
+                ) { _, _ ->
+                    val value = input.text.toString()
+                    if (value.trim { it <= ' ' }.isEmpty()) {
+                        Toast.makeText(context, "Please write something!", Toast.LENGTH_SHORT)
+                            .show()
+                    } else {
+
+                        val database = Firebase.database
+                        val myRef = database.reference
+
+                        val userSpeechObject = UserSpeechObject(mUserDisplayName,
+                            value,
+                            System.currentTimeMillis().toString())
+
+                        myRef.push().setValue(userSpeechObject)
+                    }
+
+                    val imm: InputMethodManager? =
+                        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                    imm?.hideSoftInputFromWindow(input.windowToken, 0)
+                }
                 .setNegativeButton(android.R.string.cancel,
                     DialogInterface.OnClickListener { dialog, which ->
                         val imm: InputMethodManager? =
