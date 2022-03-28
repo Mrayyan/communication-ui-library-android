@@ -27,6 +27,7 @@ import android.provider.Settings.System.getString
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 
 import android.widget.EditText
@@ -38,6 +39,7 @@ import com.azure.android.communication.ui.presentation.fragment.calling.localuse
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.microsoft.fluentui.util.activity
 import org.w3c.dom.Text
 
 
@@ -205,17 +207,19 @@ internal class ControlBarView : LinearLayout {
         }
         speakText.setOnClickListener {
             val builder = AlertDialog.Builder(context, R.style.AzureCommunicationUICalling_AlertDialog)
-            val input = EditText(context)
-            input.setTextColor(getColor(context, R.color.azure_communication_ui_color_transparent_background))
+//            val input = EditText(context)
+//            input.setTextColor(getColor(context, R.color.azure_communication_ui_color_transparent_background))
+//
+            val voiceMessageEditText = context.activity?.layoutInflater?.inflate(R.layout.azure_communication_ui_voice_message, null)
+
+            val input: EditText? = voiceMessageEditText?.findViewById(R.id.azure_communication_ui_voice_message_edit_text)
 
 
             builder
-                .setTitle(context.resources.getString(R.string.azure_communication_ui_text_to_speech))
-                .setMessage(context.resources.getString(R.string.azure_communication_ui_text_to_speech_desc))
-                .setView(input)
-                .setPositiveButton(android.R.string.ok
+                .setView(voiceMessageEditText)
+                .setPositiveButton("Send"
                 ) { _, _ ->
-                    val value = input.text.toString()
+                    val value = input?.text.toString()
                     if (value.trim { it <= ' ' }.isEmpty()) {
                         Toast.makeText(context, "Please write something!", Toast.LENGTH_SHORT)
                             .show()
@@ -233,17 +237,17 @@ internal class ControlBarView : LinearLayout {
 
                     val imm: InputMethodManager? =
                         context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-                    imm?.hideSoftInputFromWindow(input.windowToken, 0)
+                    imm?.hideSoftInputFromWindow(input?.windowToken, 0)
                 }
                 .setNegativeButton(android.R.string.cancel,
                     DialogInterface.OnClickListener { dialog, which ->
                         val imm: InputMethodManager? =
                             context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-                        imm?.hideSoftInputFromWindow(input.windowToken, 0)
-                    })
+                        imm?.hideSoftInputFromWindow(input?.windowToken, 0)
+                    }  )
 
             builder.show()
-            input.requestFocus()
+            input?.requestFocus()
             val imm: InputMethodManager? =
                 context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
             imm?.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)

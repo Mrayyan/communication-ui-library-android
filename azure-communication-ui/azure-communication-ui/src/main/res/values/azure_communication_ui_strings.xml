@@ -48,7 +48,7 @@
 
     <!-- Text to Speech View -->
     <string name="azure_communication_ui_text_to_speech" translatable="false">Text to Speech</string>
-    <string name="azure_communication_ui_text_to_speech_desc" translatable="false">Write a message to be delivered to others in the call as a voice message.</string>
+    <string name="azure_communication_ui_text_to_speech_desc" translatable="false">Type a message to have it spoken</string>
 
 
     <!--    Compliance Banner-->

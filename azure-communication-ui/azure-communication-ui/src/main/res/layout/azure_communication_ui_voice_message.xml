@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+<EditText
+    android:id="@+id/azure_communication_ui_voice_message_edit_text"
+    android:layout_width="match_parent"
+    android:textColor="@color/azure_communication_ui_color_transparent_background"
+    android:layout_height="wrap_content"
+    android:drawablePadding="@dimen/azure_communication_ui_fab_margin"
+android:textSize="14sp"
+    android:hint="@string/azure_communication_ui_text_to_speech_desc"
+    android:padding="@dimen/azure_communication_ui_fab_margin"
+    android:drawableStart="@drawable/azure_communication_ui_voice_message"
+    />
+
+</FrameLayout>

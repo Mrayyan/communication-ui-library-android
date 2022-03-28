@@ -114,12 +114,19 @@ internal class CallCompositeActivity : AppCompatActivity() {
 
                 var textToSpeak = ""
                 textToSpeak =
-                    if (latestTextToSpeechUserMessage.child("displayName").value.toString().isBlank()){
-                        "Unnamed participant says " + latestTextToSpeechUserMessage.child("voiceMessage").value.toString()
+                    when {
+                        latestTextToSpeechUserMessage.child("displayName").value.toString() == store.getCurrentState().localParticipantState.displayName -> {
+                            "You said: " + latestTextToSpeechUserMessage.child("voiceMessage").value.toString()
 
-                    } else {
-                        latestTextToSpeechUserMessage.child("displayName").value.toString() + " says " + latestTextToSpeechUserMessage.child(
-                            "voiceMessage").value.toString()
+                        }
+                        latestTextToSpeechUserMessage.child("displayName").value.toString().isBlank() -> {
+                            "Unnamed participant says " + latestTextToSpeechUserMessage.child("voiceMessage").value.toString()
+
+                        }
+                        else -> {
+                            latestTextToSpeechUserMessage.child("displayName").value.toString() + " says: " + latestTextToSpeechUserMessage.child(
+                                "voiceMessage").value.toString()
+                        }
                     }
 
 
