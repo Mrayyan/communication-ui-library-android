@@ -88,10 +88,31 @@ android {
         }
     }
 
-    flavorDimensions "distribute"
+    flavorDimensions "product"//, "distribute"
     productFlavors {
-        appCenter {
-            dimension "distribute"
+
+//        appCenter {
+//            dimension "distribute"
+//            matchingFallbacks = ["calling", "chat", "callingAndChat"]
+//        }
+//        local {
+//            dimension "distribute"
+//            applicationIdSuffix ".local"
+//            versionNameSuffix "-local"
+//            matchingFallbacks = ["calling","chat", "callingAndChat"]
+//        }
+
+        calling {
+            dimension "product"
+            matchingFallbacks = ["calling"]
+        }
+        chat {
+            dimension "product"
+            matchingFallbacks = ["chat"]
+        }
+        callingAndChat {
+            dimension "product"
+            matchingFallbacks = ["callingAndChat"]
         }
     }
 }
@@ -115,7 +136,7 @@ dependencies {
     implementation(name: "magnifier-0.0.17", ext: 'aar')
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
-    appCenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
     testImplementation "junit:junit:$junit"
     androidTestImplementation('com.microsoft.appcenter:espresso-test-extension:1.4')

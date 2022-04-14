@@ -72,6 +72,30 @@ android {
             exclude({ it.file.absolutePath.contains("/generated/") })
         }
     }
+    sourceSets {
+        calling {
+            java.srcDirs = ['src/main/java','src/callingBase/java','src/calling/java']
+        }
+        chat {
+            java.srcDirs = ['src/main/java','src/chatBase/java','src/chat/java']
+        }
+        callingAndChat {
+            java.srcDirs = ['src/main/java','src/callingBase/java','src/chatBase/java','src/callingAndChat/java']
+        }
+    }
+
+    flavorDimensions 'product'
+    productFlavors{
+        chat {
+            dimension 'product'
+        }
+        calling {
+            dimension 'product'
+        }
+        callingAndChat {
+            dimension 'product'
+        }
+    }
 }
 
 dependencies {
@@ -80,17 +104,18 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.3.6'
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation "com.azure.android:azure-core:$azure_core_version"
-    implementation "com.google.code.gson:gson:$gson_version"
-    api ("com.azure.android:azure-communication-calling:$calling_sdk_version") {
-        exclude group: "com.google.code.gson", module: "gson"
-    }
-    implementation "com.microsoft.device:dualscreen-layout:1.0.0-alpha01"
+    callingImplementation "com.azure.android:azure-core:$azure_core_version"
+    callingApi ("com.azure.android:azure-communication-calling:$calling_sdk_version")
+    callingImplementation "com.microsoft.device:dualscreen-layout:1.0.0-alpha01"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
-    implementation "com.microsoft.fluentui:fluentui_others:$fluent_ui_version"
-    implementation "com.microsoft.fluentui:fluentui_drawer:$fluent_ui_version"
-    implementation "com.microsoft.fluentui:fluentui_persona:$fluent_ui_version"
-    implementation "com.microsoft.fluentui:fluentui_transients:$fluent_ui_version"
+    callingImplementation "com.microsoft.fluentui:fluentui_others:$fluent_ui_version"
+    callingImplementation "com.microsoft.fluentui:fluentui_drawer:$fluent_ui_version"
+    callingImplementation "com.microsoft.fluentui:fluentui_persona:$fluent_ui_version"
+    callingImplementation "com.microsoft.fluentui:fluentui_transients:$fluent_ui_version"
+
+    chatImplementation ("com.azure.android:azure-communication-chat:1.0.1") {
+        exclude group: 'com.microsoft', module: 'trouter-client-android'
+    }
 
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     testImplementation "junit:junit:$junit"
@@ -100,5 +125,6 @@ dependencies {
 
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
+
 
 }
