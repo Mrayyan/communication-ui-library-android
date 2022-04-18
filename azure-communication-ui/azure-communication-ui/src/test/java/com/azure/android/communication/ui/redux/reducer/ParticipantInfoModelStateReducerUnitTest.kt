@@ -3,10 +3,11 @@
 
 package com.azure.android.communication.ui.redux.reducer
 
-import com.azure.android.communication.ui.model.ParticipantInfoModel
-import com.azure.android.communication.ui.redux.action.NavigationAction
-import com.azure.android.communication.ui.redux.action.ParticipantAction
-import com.azure.android.communication.ui.redux.state.RemoteParticipantsState
+import com.azure.android.communication.ui.calling.model.ParticipantInfoModel
+import com.azure.android.communication.ui.calling.redux.action.NavigationAction
+import com.azure.android.communication.ui.calling.redux.action.ParticipantAction
+import com.azure.android.communication.ui.calling.redux.reducer.ParticipantStateReducerImpl
+import com.azure.android.communication.ui.calling.redux.state.RemoteParticipantsState
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

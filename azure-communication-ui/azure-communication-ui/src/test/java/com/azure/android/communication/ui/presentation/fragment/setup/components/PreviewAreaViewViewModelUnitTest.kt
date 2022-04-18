@@ -3,10 +3,11 @@
 
 package com.azure.android.communication.ui.presentation.fragment.setup.components
 
+import com.azure.android.communication.ui.calling.presentation.fragment.setup.components.PreviewAreaViewModel
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.redux.AppStore
-import com.azure.android.communication.ui.redux.action.LocalParticipantAction
-import com.azure.android.communication.ui.redux.state.ReduxState
+import com.azure.android.communication.ui.calling.redux.AppStore
+import com.azure.android.communication.ui.calling.redux.action.LocalParticipantAction
+import com.azure.android.communication.ui.calling.redux.state.ReduxState
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

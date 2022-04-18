@@ -3,9 +3,10 @@
 
 package com.azure.android.communication.ui.redux.reducer
 
-import com.azure.android.communication.ui.redux.action.CallingAction
-import com.azure.android.communication.ui.redux.state.CallingState
-import com.azure.android.communication.ui.redux.state.CallingStatus
+import com.azure.android.communication.ui.calling.redux.reducer.CallStateReducerImpl
+import com.azure.android.communication.ui.calling.redux.action.CallingAction
+import com.azure.android.communication.ui.calling.redux.state.CallingState
+import com.azure.android.communication.ui.calling.redux.state.CallingStatus
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

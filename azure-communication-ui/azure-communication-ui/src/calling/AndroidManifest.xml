@@ -13,13 +13,13 @@
             android:required="false"
             />
         <activity
-            android:name="com.azure.android.communication.ui.presentation.CallCompositeActivity"
+            android:name="com.azure.android.communication.ui.calling.presentation.CallCompositeActivity"
             android:launchMode="singleTask"
             android:theme="@style/AzureCommunicationUI.Theme.Calling"
             android:exported="false"
             />
         <service
-            android:name="com.azure.android.communication.ui.service.calling.InCallService"
+            android:name="com.azure.android.communication.ui.calling.service.calling.InCallService"
             android:foregroundServiceType="microphone"
             android:stopWithTask="true"
             android:exported="false"

@@ -3,22 +3,23 @@
 
 package com.azure.android.communication.ui.presentation.fragment.setup.components
 
+import com.azure.android.communication.ui.calling.presentation.fragment.setup.components.SetupControlBarViewModel
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.redux.AppStore
-import com.azure.android.communication.ui.redux.action.PermissionAction
-import com.azure.android.communication.ui.redux.state.AudioDeviceSelectionStatus
-import com.azure.android.communication.ui.redux.state.AudioOperationalStatus
-import com.azure.android.communication.ui.redux.state.AudioState
-import com.azure.android.communication.ui.redux.state.BluetoothState
-import com.azure.android.communication.ui.redux.state.CallingState
-import com.azure.android.communication.ui.redux.state.CallingStatus
-import com.azure.android.communication.ui.redux.state.CameraState
-import com.azure.android.communication.ui.redux.state.CameraDeviceSelectionStatus
-import com.azure.android.communication.ui.redux.state.CameraOperationalStatus
-import com.azure.android.communication.ui.redux.state.CameraTransmissionStatus
-import com.azure.android.communication.ui.redux.state.PermissionState
-import com.azure.android.communication.ui.redux.state.PermissionStatus
-import com.azure.android.communication.ui.redux.state.ReduxState
+import com.azure.android.communication.ui.calling.redux.AppStore
+import com.azure.android.communication.ui.calling.redux.action.PermissionAction
+import com.azure.android.communication.ui.calling.redux.state.AudioDeviceSelectionStatus
+import com.azure.android.communication.ui.calling.redux.state.AudioOperationalStatus
+import com.azure.android.communication.ui.calling.redux.state.AudioState
+import com.azure.android.communication.ui.calling.redux.state.BluetoothState
+import com.azure.android.communication.ui.calling.redux.state.CallingState
+import com.azure.android.communication.ui.calling.redux.state.CallingStatus
+import com.azure.android.communication.ui.calling.redux.state.CameraState
+import com.azure.android.communication.ui.calling.redux.state.CameraDeviceSelectionStatus
+import com.azure.android.communication.ui.calling.redux.state.CameraOperationalStatus
+import com.azure.android.communication.ui.calling.redux.state.CameraTransmissionStatus
+import com.azure.android.communication.ui.calling.redux.state.PermissionState
+import com.azure.android.communication.ui.calling.redux.state.PermissionStatus
+import com.azure.android.communication.ui.calling.redux.state.ReduxState
 import org.junit.Assert
 
 import org.junit.Rule
@@ -316,8 +317,8 @@ internal class SetupControlBarViewModelUnitTest {
     }
 
     private fun initViewModel(
-        setupControlBarViewModel: SetupControlBarViewModel,
-        callingStatus: CallingStatus = CallingStatus.NONE,
+            setupControlBarViewModel: SetupControlBarViewModel,
+            callingStatus: CallingStatus = CallingStatus.NONE,
     ) {
         setupControlBarViewModel.init(
             PermissionState(PermissionStatus.GRANTED, PermissionStatus.GRANTED),
@@ -336,8 +337,8 @@ internal class SetupControlBarViewModelUnitTest {
     }
 
     private fun updateViewModel(
-        setupControlBarViewModel: SetupControlBarViewModel,
-        callingStatus: CallingStatus = CallingStatus.NONE,
+            setupControlBarViewModel: SetupControlBarViewModel,
+            callingStatus: CallingStatus = CallingStatus.NONE,
     ) {
         setupControlBarViewModel.update(
             PermissionState(PermissionStatus.GRANTED, PermissionStatus.GRANTED),

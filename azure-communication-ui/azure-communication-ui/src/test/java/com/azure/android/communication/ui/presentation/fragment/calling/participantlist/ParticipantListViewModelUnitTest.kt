@@ -3,19 +3,21 @@
 
 package com.azure.android.communication.ui.presentation.fragment.calling.participantlist
 
+import com.azure.android.communication.ui.calling.presentation.fragment.calling.participantlist.ParticipantListCellModel
+import com.azure.android.communication.ui.calling.presentation.fragment.calling.participantlist.ParticipantListViewModel
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.model.ParticipantInfoModel
-import com.azure.android.communication.ui.model.StreamType
-import com.azure.android.communication.ui.model.VideoStreamModel
-import com.azure.android.communication.ui.redux.state.AudioDeviceSelectionStatus
-import com.azure.android.communication.ui.redux.state.AudioOperationalStatus
-import com.azure.android.communication.ui.redux.state.AudioState
-import com.azure.android.communication.ui.redux.state.BluetoothState
-import com.azure.android.communication.ui.redux.state.CameraDeviceSelectionStatus
-import com.azure.android.communication.ui.redux.state.CameraOperationalStatus
-import com.azure.android.communication.ui.redux.state.CameraState
-import com.azure.android.communication.ui.redux.state.CameraTransmissionStatus
-import com.azure.android.communication.ui.redux.state.LocalUserState
+import com.azure.android.communication.ui.calling.model.ParticipantInfoModel
+import com.azure.android.communication.ui.calling.model.StreamType
+import com.azure.android.communication.ui.calling.model.VideoStreamModel
+import com.azure.android.communication.ui.calling.redux.state.AudioDeviceSelectionStatus
+import com.azure.android.communication.ui.calling.redux.state.AudioOperationalStatus
+import com.azure.android.communication.ui.calling.redux.state.AudioState
+import com.azure.android.communication.ui.calling.redux.state.BluetoothState
+import com.azure.android.communication.ui.calling.redux.state.CameraDeviceSelectionStatus
+import com.azure.android.communication.ui.calling.redux.state.CameraOperationalStatus
+import com.azure.android.communication.ui.calling.redux.state.CameraState
+import com.azure.android.communication.ui.calling.redux.state.CameraTransmissionStatus
+import com.azure.android.communication.ui.calling.redux.state.LocalUserState
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runBlockingTest
@@ -282,14 +284,14 @@ internal class ParticipantListViewModelUnitTest {
     }
 
     private fun getParticipantInfoModel(
-        displayName: String,
-        userIdentifier: String,
-        isMuted: Boolean,
-        isSpeaking: Boolean,
-        screenShareVideoStreamModel: VideoStreamModel? = null,
-        cameraVideoStreamModel: VideoStreamModel? = null,
-        modifiedTimestamp: Number,
-        speakingTimestamp: Number,
+            displayName: String,
+            userIdentifier: String,
+            isMuted: Boolean,
+            isSpeaking: Boolean,
+            screenShareVideoStreamModel: VideoStreamModel? = null,
+            cameraVideoStreamModel: VideoStreamModel? = null,
+            modifiedTimestamp: Number,
+            speakingTimestamp: Number,
     ) = ParticipantInfoModel(
         displayName,
         userIdentifier,

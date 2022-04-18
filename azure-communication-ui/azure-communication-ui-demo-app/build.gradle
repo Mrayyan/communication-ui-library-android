@@ -88,6 +88,24 @@ android {
         }
     }
 
+    sourceSets {
+        calling {
+            java.srcDirs = ['src/main/java','src/calling/java']
+            res.srcDirs = ['src/main/res','src/calling/res']
+            manifest.srcFile 'src/calling/AndroidManifest.xml'
+        }
+        chat {
+            java.srcDirs = ['src/main/java','src/chat/java']
+            res.srcDirs = ['src/main/res','src/chat/res']
+            manifest.srcFile 'src/chat/AndroidManifest.xml'
+        }
+        callingAndChat {
+            java.srcDirs = ['src/main/java','src/callingAndChat/java']
+            res.srcDirs = ['src/main/res','src/callingAndChat/res']
+            manifest.srcFile 'src/callingAndChat/AndroidManifest.xml'
+        }
+    }
+
     flavorDimensions "product"//, "distribute"
     productFlavors {
 

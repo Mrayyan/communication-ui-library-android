@@ -3,6 +3,8 @@
 
 package com.azure.android.communication.ui.callingcompositedemoapp.launcher;
 
+import com.azure.android.communication.ui.ChatComposite;
+
 public class ChatCompositeJavaLauncher implements ChatCompositeLauncher {
 
     public ChatCompositeJavaLauncher() {
@@ -10,6 +12,7 @@ public class ChatCompositeJavaLauncher implements ChatCompositeLauncher {
 
     @Override
     public void launch() {
-
+        final ChatComposite chatComposite = new ChatComposite();
+        chatComposite.launch();
     }
 }

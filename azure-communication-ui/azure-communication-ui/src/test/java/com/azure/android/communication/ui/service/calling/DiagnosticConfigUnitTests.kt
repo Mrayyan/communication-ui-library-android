@@ -1,6 +1,6 @@
 package com.azure.android.communication.ui.service.calling
 
-import com.azure.android.communication.ui.DiagnosticConfig
+import com.azure.android.communication.ui.calling.DiagnosticConfig
 import org.junit.Assert
 import org.junit.Test
 

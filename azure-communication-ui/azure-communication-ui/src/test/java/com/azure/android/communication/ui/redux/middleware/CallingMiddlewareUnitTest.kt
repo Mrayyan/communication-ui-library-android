@@ -3,14 +3,15 @@
 
 package com.azure.android.communication.ui.redux.middleware
 
-import com.azure.android.communication.ui.logger.DefaultLogger
-import com.azure.android.communication.ui.redux.AppStore
-import com.azure.android.communication.ui.redux.action.CallingAction
-import com.azure.android.communication.ui.redux.action.ErrorAction
-import com.azure.android.communication.ui.redux.action.LifecycleAction
-import com.azure.android.communication.ui.redux.action.LocalParticipantAction
-import com.azure.android.communication.ui.redux.middleware.handler.CallingMiddlewareActionHandler
-import com.azure.android.communication.ui.redux.state.ReduxState
+import com.azure.android.communication.ui.calling.logger.DefaultLogger
+import com.azure.android.communication.ui.calling.redux.AppStore
+import com.azure.android.communication.ui.calling.redux.action.CallingAction
+import com.azure.android.communication.ui.calling.redux.action.ErrorAction
+import com.azure.android.communication.ui.calling.redux.action.LifecycleAction
+import com.azure.android.communication.ui.calling.redux.action.LocalParticipantAction
+import com.azure.android.communication.ui.calling.redux.middleware.CallingMiddlewareImpl
+import com.azure.android.communication.ui.calling.redux.middleware.handler.CallingMiddlewareActionHandler
+import com.azure.android.communication.ui.calling.redux.state.ReduxState
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

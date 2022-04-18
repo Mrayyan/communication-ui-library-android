@@ -3,7 +3,7 @@
 
 package com.azure.android.communication.ui.helper
 
-import com.azure.android.communication.ui.utilities.CoroutineContextProvider
+import com.azure.android.communication.ui.calling.utilities.CoroutineContextProvider
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlin.coroutines.CoroutineContext
 

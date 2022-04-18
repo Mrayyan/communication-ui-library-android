@@ -4,12 +4,12 @@
 package com.azure.android.communication.ui.presentation.fragment.calling.participant
 
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.model.ParticipantInfoModel
-import com.azure.android.communication.ui.model.StreamType
-import com.azure.android.communication.ui.model.VideoStreamModel
-import com.azure.android.communication.ui.presentation.fragment.calling.participant.grid.ParticipantGridCellViewModel
-import com.azure.android.communication.ui.presentation.fragment.calling.participant.grid.ParticipantGridViewModel
-import com.azure.android.communication.ui.presentation.fragment.factories.ParticipantGridCellViewModelFactory
+import com.azure.android.communication.ui.calling.model.ParticipantInfoModel
+import com.azure.android.communication.ui.calling.model.StreamType
+import com.azure.android.communication.ui.calling.model.VideoStreamModel
+import com.azure.android.communication.ui.calling.presentation.fragment.calling.participant.grid.ParticipantGridCellViewModel
+import com.azure.android.communication.ui.calling.presentation.fragment.calling.participant.grid.ParticipantGridViewModel
+import com.azure.android.communication.ui.calling.presentation.fragment.factories.ParticipantGridCellViewModelFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
@@ -664,11 +664,11 @@ internal class ParticipantGridViewModelUnitTest {
     private fun getParticipantGridViewModel() = ParticipantGridViewModel(ParticipantGridCellViewModelFactory())
 
     private fun getParticipantInfoModel(
-        displayName: String,
-        id: String,
-        timestamp: Number = 0,
-        screenShareVideoStreamModel: VideoStreamModel? = null,
-        cameraVideoStreamModel: VideoStreamModel? = null,
+            displayName: String,
+            id: String,
+            timestamp: Number = 0,
+            screenShareVideoStreamModel: VideoStreamModel? = null,
+            cameraVideoStreamModel: VideoStreamModel? = null,
     ) = ParticipantInfoModel(
         displayName,
         id,

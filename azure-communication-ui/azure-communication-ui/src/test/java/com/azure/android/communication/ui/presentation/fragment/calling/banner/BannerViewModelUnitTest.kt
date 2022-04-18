@@ -3,9 +3,11 @@
 
 package com.azure.android.communication.ui.presentation.fragment.calling.banner
 
+import com.azure.android.communication.ui.calling.presentation.fragment.calling.banner.BannerInfoType
+import com.azure.android.communication.ui.calling.presentation.fragment.calling.banner.BannerViewModel
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.redux.state.CallingState
-import com.azure.android.communication.ui.redux.state.CallingStatus
+import com.azure.android.communication.ui.calling.redux.state.CallingState
+import com.azure.android.communication.ui.calling.redux.state.CallingStatus
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runBlockingTest

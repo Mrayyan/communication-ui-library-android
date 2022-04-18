@@ -3,12 +3,14 @@
 
 package com.azure.android.communication.ui.presentation.navigation
 
+import com.azure.android.communication.ui.calling.presentation.navigation.NavigationRouter
+import com.azure.android.communication.ui.calling.presentation.navigation.NavigationRouterImpl
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.redux.AppStore
-import com.azure.android.communication.ui.redux.state.AppReduxState
-import com.azure.android.communication.ui.redux.state.NavigationState
-import com.azure.android.communication.ui.redux.state.NavigationStatus
-import com.azure.android.communication.ui.redux.state.ReduxState
+import com.azure.android.communication.ui.calling.redux.AppStore
+import com.azure.android.communication.ui.calling.redux.state.AppReduxState
+import com.azure.android.communication.ui.calling.redux.state.NavigationState
+import com.azure.android.communication.ui.calling.redux.state.NavigationStatus
+import com.azure.android.communication.ui.calling.redux.state.ReduxState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.MutableStateFlow

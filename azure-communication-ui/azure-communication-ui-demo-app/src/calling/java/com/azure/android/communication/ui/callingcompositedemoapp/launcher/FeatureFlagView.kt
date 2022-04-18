@@ -5,8 +5,8 @@ import android.content.SharedPreferences
 import android.util.AttributeSet
 import android.widget.CheckBox
 import android.widget.LinearLayout
-import com.azure.android.communication.ui.utilities.implementation.FEATURE_FLAG_SHARED_PREFS_KEY
-import com.azure.android.communication.ui.utilities.implementation.FeatureFlags
+import com.azure.android.communication.ui.calling.utilities.implementation.FEATURE_FLAG_SHARED_PREFS_KEY
+import com.azure.android.communication.ui.calling.utilities.implementation.FeatureFlags
 
 // This lists all the Features in the FeatureFlag system
 // and lets you enable/disable them.

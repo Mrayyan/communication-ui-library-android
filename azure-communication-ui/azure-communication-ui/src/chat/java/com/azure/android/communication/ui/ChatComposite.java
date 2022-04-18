@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.azure.android.communication.chat.ChatThreadClientBuilder;
 
-public class ChatComposite {
+public final class ChatComposite {
     public void launch() {
         final ChatThreadClientBuilder chatThreadAsyncClient = new ChatThreadClientBuilder();
         Log.d("ChatComposite", "launch");

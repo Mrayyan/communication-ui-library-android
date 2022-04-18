@@ -75,12 +75,15 @@ android {
     sourceSets {
         calling {
             java.srcDirs = ['src/main/java','src/callingBase/java','src/calling/java']
+            res.srcDirs = ['src/main/res', 'src/callingBase/res','src/calling/res']
         }
         chat {
             java.srcDirs = ['src/main/java','src/chatBase/java','src/chat/java']
+            res.srcDirs = ['src/main/res', 'src/chatBase/res','src/chat/res']
         }
         callingAndChat {
             java.srcDirs = ['src/main/java','src/callingBase/java','src/chatBase/java','src/callingAndChat/java']
+            res.srcDirs = ['src/main/res', 'src/callingBase/res','src/chatBase/res','src/callingAndChat/res']
         }
     }
 

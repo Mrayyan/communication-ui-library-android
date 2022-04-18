@@ -3,9 +3,10 @@
 
 package com.azure.android.communication.ui.presentation.fragment.calling.hangup
 
-import com.azure.android.communication.ui.redux.AppStore
-import com.azure.android.communication.ui.redux.action.CallingAction
-import com.azure.android.communication.ui.redux.state.ReduxState
+import com.azure.android.communication.ui.calling.presentation.fragment.calling.hangup.ConfirmLeaveOverlayViewModel
+import com.azure.android.communication.ui.calling.redux.AppStore
+import com.azure.android.communication.ui.calling.redux.action.CallingAction
+import com.azure.android.communication.ui.calling.redux.state.ReduxState
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

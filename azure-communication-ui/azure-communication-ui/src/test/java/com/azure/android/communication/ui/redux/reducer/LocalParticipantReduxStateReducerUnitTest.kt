@@ -3,18 +3,19 @@
 
 package com.azure.android.communication.ui.redux.reducer
 
-import com.azure.android.communication.ui.configuration.events.CommunicationUIErrorCode
-import com.azure.android.communication.ui.error.CallCompositeError
-import com.azure.android.communication.ui.redux.action.LocalParticipantAction
-import com.azure.android.communication.ui.redux.state.AudioDeviceSelectionStatus
-import com.azure.android.communication.ui.redux.state.AudioOperationalStatus
-import com.azure.android.communication.ui.redux.state.AudioState
-import com.azure.android.communication.ui.redux.state.BluetoothState
-import com.azure.android.communication.ui.redux.state.CameraDeviceSelectionStatus
-import com.azure.android.communication.ui.redux.state.CameraOperationalStatus
-import com.azure.android.communication.ui.redux.state.CameraState
-import com.azure.android.communication.ui.redux.state.CameraTransmissionStatus
-import com.azure.android.communication.ui.redux.state.LocalUserState
+import com.azure.android.communication.ui.calling.redux.reducer.LocalParticipantStateReducerImpl
+import com.azure.android.communication.ui.calling.configuration.events.CommunicationUIErrorCode
+import com.azure.android.communication.ui.calling.error.CallCompositeError
+import com.azure.android.communication.ui.calling.redux.action.LocalParticipantAction
+import com.azure.android.communication.ui.calling.redux.state.AudioDeviceSelectionStatus
+import com.azure.android.communication.ui.calling.redux.state.AudioOperationalStatus
+import com.azure.android.communication.ui.calling.redux.state.AudioState
+import com.azure.android.communication.ui.calling.redux.state.BluetoothState
+import com.azure.android.communication.ui.calling.redux.state.CameraDeviceSelectionStatus
+import com.azure.android.communication.ui.calling.redux.state.CameraOperationalStatus
+import com.azure.android.communication.ui.calling.redux.state.CameraState
+import com.azure.android.communication.ui.calling.redux.state.CameraTransmissionStatus
+import com.azure.android.communication.ui.calling.redux.state.LocalUserState
 import org.junit.Assert
 import org.junit.Test
 

@@ -3,9 +3,10 @@
 
 package com.azure.android.communication.ui.redux.reducer
 
-import com.azure.android.communication.ui.redux.action.PermissionAction
-import com.azure.android.communication.ui.redux.state.PermissionState
-import com.azure.android.communication.ui.redux.state.PermissionStatus
+import com.azure.android.communication.ui.calling.redux.reducer.PermissionStateReducerImpl
+import com.azure.android.communication.ui.calling.redux.action.PermissionAction
+import com.azure.android.communication.ui.calling.redux.state.PermissionState
+import com.azure.android.communication.ui.calling.redux.state.PermissionStatus
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

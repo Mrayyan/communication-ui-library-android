@@ -4,6 +4,8 @@
 package com.azure.android.communication.ui.logger
 
 import android.util.Log
+import com.azure.android.communication.ui.calling.logger.DefaultLogger
+import com.azure.android.communication.ui.calling.logger.Logger
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 import org.mockito.Mockito.mockStatic

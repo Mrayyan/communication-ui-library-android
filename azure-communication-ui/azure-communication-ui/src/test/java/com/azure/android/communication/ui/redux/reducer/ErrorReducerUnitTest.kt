@@ -3,10 +3,11 @@
 
 package com.azure.android.communication.ui.redux.reducer
 
-import com.azure.android.communication.ui.configuration.events.CommunicationUIErrorCode
-import com.azure.android.communication.ui.error.FatalError
-import com.azure.android.communication.ui.redux.action.ErrorAction
-import com.azure.android.communication.ui.redux.state.ErrorState
+import com.azure.android.communication.ui.calling.configuration.events.CommunicationUIErrorCode
+import com.azure.android.communication.ui.calling.error.FatalError
+import com.azure.android.communication.ui.calling.redux.action.ErrorAction
+import com.azure.android.communication.ui.calling.redux.reducer.ErrorReducerImpl
+import com.azure.android.communication.ui.calling.redux.state.ErrorState
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

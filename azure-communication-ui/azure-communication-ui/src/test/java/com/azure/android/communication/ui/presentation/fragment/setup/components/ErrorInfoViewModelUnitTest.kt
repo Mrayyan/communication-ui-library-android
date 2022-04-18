@@ -3,11 +3,12 @@
 
 package com.azure.android.communication.ui.presentation.fragment.setup.components
 
-import com.azure.android.communication.ui.configuration.events.CommunicationUIErrorCode
-import com.azure.android.communication.ui.error.CallStateError
+import com.azure.android.communication.ui.calling.presentation.fragment.setup.components.ErrorInfoViewModel
+import com.azure.android.communication.ui.calling.configuration.events.CommunicationUIErrorCode
+import com.azure.android.communication.ui.calling.error.CallStateError
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.redux.state.AppReduxState
-import com.azure.android.communication.ui.redux.state.ErrorState
+import com.azure.android.communication.ui.calling.redux.state.AppReduxState
+import com.azure.android.communication.ui.calling.redux.state.ErrorState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch

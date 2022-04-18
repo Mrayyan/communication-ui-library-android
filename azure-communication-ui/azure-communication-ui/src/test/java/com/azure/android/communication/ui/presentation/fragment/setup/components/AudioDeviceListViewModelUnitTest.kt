@@ -4,14 +4,14 @@
 package com.azure.android.communication.ui.presentation.fragment.setup.components
 
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.presentation.fragment.common.audiodevicelist.AudioDeviceListViewModel
-import com.azure.android.communication.ui.redux.AppStore
-import com.azure.android.communication.ui.redux.action.LocalParticipantAction
-import com.azure.android.communication.ui.redux.state.ReduxState
-import com.azure.android.communication.ui.redux.state.AudioState
-import com.azure.android.communication.ui.redux.state.BluetoothState
-import com.azure.android.communication.ui.redux.state.AudioDeviceSelectionStatus
-import com.azure.android.communication.ui.redux.state.AudioOperationalStatus
+import com.azure.android.communication.ui.calling.presentation.fragment.common.audiodevicelist.AudioDeviceListViewModel
+import com.azure.android.communication.ui.calling.redux.AppStore
+import com.azure.android.communication.ui.calling.redux.action.LocalParticipantAction
+import com.azure.android.communication.ui.calling.redux.state.ReduxState
+import com.azure.android.communication.ui.calling.redux.state.AudioState
+import com.azure.android.communication.ui.calling.redux.state.BluetoothState
+import com.azure.android.communication.ui.calling.redux.state.AudioDeviceSelectionStatus
+import com.azure.android.communication.ui.calling.redux.state.AudioOperationalStatus
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 import kotlinx.coroutines.launch

@@ -3,10 +3,11 @@
 
 package com.azure.android.communication.ui.configuration
 
-import com.azure.android.communication.ui.CallingEventHandler
+import com.azure.android.communication.ui.calling.CallingEventHandler
+import com.azure.android.communication.ui.calling.configuration.CallCompositeConfiguration
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.redux.state.AppReduxState
-import com.azure.android.communication.ui.redux.state.ErrorState
+import com.azure.android.communication.ui.calling.redux.state.AppReduxState
+import com.azure.android.communication.ui.calling.redux.state.ErrorState
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert
 import org.junit.Rule

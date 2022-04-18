@@ -1,7 +1,8 @@
 package com.azure.android.communication.ui.presentation.fragment.setup.components
 
+import com.azure.android.communication.ui.calling.presentation.fragment.setup.components.SetupGradientViewModel
 import com.azure.android.communication.ui.helper.MainCoroutineRule
-import com.azure.android.communication.ui.redux.state.CameraOperationalStatus
+import com.azure.android.communication.ui.calling.redux.state.CameraOperationalStatus
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runBlockingTest
