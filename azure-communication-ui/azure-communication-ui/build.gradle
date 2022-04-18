@@ -85,7 +85,7 @@ android {
     }
 
     flavorDimensions 'product'
-    productFlavors{
+    productFlavors {
         chat {
             dimension 'product'
         }
