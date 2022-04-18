@@ -3,8 +3,10 @@ apply plugin: 'maven-publish'
 def LIB_GROUP_ID = 'com.azure.android'
 def CALLING_LIB_ARTIFACT_ID = 'azure-communication-ui-calling'
 def CHAT_LIB_ARTIFACT_ID = 'azure-communication-ui-chat'
-def LIB_VERSION = "$ui_library_version_name"
+def CALLING_LIB_VERSION = "$ui_library_version_name"
+def CHAT_LIB_VERSION = "$ui_library_version_name"
 def CALLING_LIB_DESCRIPTION = "Azure Communication Calling UI for Android." // what should be here?
+def CHAT_LIB_DESCRIPTION = "Azure Communication Chat UI for Android."
 
 task javadoc(type: Javadoc) {
     failOnError false
@@ -64,7 +66,7 @@ publishing {
             }
             groupId LIB_GROUP_ID
             artifactId CALLING_LIB_ARTIFACT_ID
-            version LIB_VERSION
+            version CALLING_LIB_VERSION
 
             artifact("$buildDir/outputs/aar/azure-communication-ui-calling-release.aar")
 
@@ -90,7 +92,7 @@ publishing {
         releaseChat(MavenPublication) {
             pom {
                 name = "${LIB_GROUP_ID}:${CHAT_LIB_ARTIFACT_ID}"
-                description = CALLING_LIB_DESCRIPTION
+                description = CHAT_LIB_DESCRIPTION
                 url = "https://github.com/Azure/communication-ui-library-android"
 
                 licenses {
@@ -112,10 +114,10 @@ publishing {
                 }
             }
             groupId LIB_GROUP_ID
-            artifactId CALLING_LIB_ARTIFACT_ID
-            version LIB_VERSION
+            artifactId CHAT_LIB_ARTIFACT_ID
+            version CHAT_LIB_VERSION
 
-            artifact("$buildDir/outputs/aar/azure-communication-ui-calling-release.aar")
+            artifact("$buildDir/outputs/aar/azure-communication-ui-chat-release.aar")
 
             artifact javadocJar
             artifact sourcesJar
@@ -128,7 +130,7 @@ publishing {
                     dependencyNode.appendNode('artifactId', it.name)
                     dependencyNode.appendNode('version', it.version)
                 }
-                configurations.callingImplementation.allDependencies.each {
+                configurations.chatImplementation.allDependencies.each {
                     def dependencyNode = dependenciesNode.appendNode('dependency')
                     dependencyNode.appendNode('groupId', it.group)
                     dependencyNode.appendNode('artifactId', it.name)
