@@ -7,7 +7,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.azure.android.communication.ui.callingcompositedemoapp.databinding.ActivityChatLauncherBinding
-import com.azure.android.communication.ui.callingcompositedemoapp.launcher.ChatCompositeLauncher
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
@@ -47,9 +46,4 @@ class ChatLauncherActivity : AppCompatActivity() {
 
         chatLauncherViewModel.doLaunch()
     }
-
-    private fun processResult(result: Result<ChatCompositeLauncher?>) {
-
-    }
-
 }
