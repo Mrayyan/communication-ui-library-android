@@ -1,1 +1,5 @@
-<resources></resources>
+<resources>
+    <string name="app_name">Communication UI Demo</string>
+    <string name="version">version:</string>
+    <string name="debug">Debug</string>
+</resources>

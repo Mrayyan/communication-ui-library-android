@@ -133,6 +133,9 @@ android {
             matchingFallbacks = ["callingAndChat"]
         }
     }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
 }
 
 repositories {

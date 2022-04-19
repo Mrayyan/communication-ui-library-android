@@ -3,7 +3,6 @@
    Licensed under the MIT License.
   -->
 <resources>
-    <string name="app_name">Communication UI Demo</string>
     <string name="tokenUrlHint">Token function URL</string>
     <string name="nameHint">Your Name</string>
     <string name="groupCallLabel">Group call</string>
@@ -24,8 +23,6 @@
     <string name="isRTLCheckboxLabel">isRTL</string>
     <string name="languageDropdownHint">Language</string>
     <string name="languageDefaultSelection">ENGLISH</string>
-    <string name="version">version:</string>
-    <string name="debug">Debug</string>
     <string name="enableCustomTranslation">Enable Custom Translation</string>
     <string name="magnifier_viewer_text_fd">Opened FDs: %1$d, %.2f%%</string>
     <string name="magnifier_viewer_text_heap">Heap used: %1$d MB, %.2f%%</string>

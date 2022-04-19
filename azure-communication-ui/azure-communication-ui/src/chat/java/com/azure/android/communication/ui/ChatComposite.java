@@ -10,7 +10,7 @@ import com.azure.android.communication.chat.ChatThreadClientBuilder;
 public final class ChatComposite {
     public void launch() {
         final ChatThreadClientBuilder chatThreadAsyncClient = new ChatThreadClientBuilder();
-        Log.d("ChatComposite", "launch");
+        Log.d("ChatComposite", "launch-------------------------------");
     }
 }
 
