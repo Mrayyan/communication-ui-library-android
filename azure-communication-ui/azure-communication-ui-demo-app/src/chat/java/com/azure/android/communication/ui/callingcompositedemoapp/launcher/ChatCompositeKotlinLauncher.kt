@@ -5,11 +5,11 @@ package com.azure.android.communication.ui.callingcompositedemoapp.launcher
 
 import com.azure.android.communication.ui.chat.ChatComposite
 
-class ChatCompositeKotlinLauncher :
-        ChatCompositeLauncher {
-
-    override fun launch() {
-        val chatComposite = ChatComposite()
-        chatComposite.launch()
-    }
-}
+//class ChatCompositeKotlinLauncher :
+//        ChatCompositeLauncher {
+//
+//    override fun launch() {
+//        val chatComposite = ChatComposite()
+//        chatComposite.launch()
+//    }
+//}

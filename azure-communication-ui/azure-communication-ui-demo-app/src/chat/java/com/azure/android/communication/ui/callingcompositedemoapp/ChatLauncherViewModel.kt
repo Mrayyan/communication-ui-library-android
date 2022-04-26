@@ -4,12 +4,12 @@
 package com.azure.android.communication.ui.callingcompositedemoapp
 
 import androidx.lifecycle.ViewModel
-import com.azure.android.communication.ui.callingcompositedemoapp.launcher.ChatCompositeKotlinLauncher
+import com.azure.android.communication.ui.callingcompositedemoapp.launcher.ChatCompositeJavaLauncher
 import com.azure.android.communication.ui.callingcompositedemoapp.launcher.ChatCompositeLauncher
 
 class ChatLauncherViewModel : ViewModel() {
-    fun doLaunch() {
-        val launcher: ChatCompositeLauncher = ChatCompositeKotlinLauncher()
-        launcher.launch()
+    fun doLaunch(activity: ChatLauncherActivity) {
+        val launcher: ChatCompositeLauncher = ChatCompositeJavaLauncher() { "token" }
+        launcher.launch(activity)
     }
 }

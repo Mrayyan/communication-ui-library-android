@@ -116,7 +116,7 @@ dependencies {
     callingImplementation "com.microsoft.fluentui:fluentui_persona:$fluent_ui_version"
     callingImplementation "com.microsoft.fluentui:fluentui_transients:$fluent_ui_version"
 
-    chatImplementation ("com.azure.android:azure-communication-chat:1.0.1") {
+    chatApi ("com.azure.android:azure-communication-chat:1.0.1") {
         exclude group: 'com.microsoft', module: 'trouter-client-android'
     }
 

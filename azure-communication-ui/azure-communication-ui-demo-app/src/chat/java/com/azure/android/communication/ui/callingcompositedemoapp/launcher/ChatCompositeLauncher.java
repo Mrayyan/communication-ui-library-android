@@ -3,6 +3,8 @@
 
 package com.azure.android.communication.ui.callingcompositedemoapp.launcher;
 
+import com.azure.android.communication.ui.callingcompositedemoapp.ChatLauncherActivity;
+
 public interface ChatCompositeLauncher {
-    void launch();
+    void launch(ChatLauncherActivity activity);
 }
