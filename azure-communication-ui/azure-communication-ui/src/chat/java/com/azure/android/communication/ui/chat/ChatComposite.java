@@ -8,6 +8,9 @@ import android.util.Log;
 
 import com.azure.android.communication.chat.ChatThreadClientBuilder;
 
+/**
+ * Chat composite
+ */
 public final class ChatComposite {
 
     /**

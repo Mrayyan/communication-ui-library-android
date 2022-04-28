@@ -2,10 +2,9 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-
 }
 
-apply from: file('publish.gradle')
+
 apply from: file('jacoco.gradle')
 
 android {
@@ -99,6 +98,28 @@ android {
             dimension 'product'
         }
     }
+
+    publishing {
+        multipleVariants('releaseCalling') {
+            withSourcesJar()
+            withJavadocJar()
+            includeBuildTypeValues('release')
+            includeFlavorDimensionAndValues(
+                    /*dimension =*/ 'product',
+                    /*values =*/ 'calling'
+            )
+        }
+        multipleVariants('releaseChat') {
+            withSourcesJar()
+            withJavadocJar()
+            includeBuildTypeValues('release')
+            includeFlavorDimensionAndValues(
+                    /*dimension =*/ 'product',
+                    /*values =*/ 'chat'
+            )
+        }
+    }
+
 }
 
 dependencies {
@@ -128,6 +149,6 @@ dependencies {
 
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
-
-
 }
+
+apply from: file('publish.gradle')

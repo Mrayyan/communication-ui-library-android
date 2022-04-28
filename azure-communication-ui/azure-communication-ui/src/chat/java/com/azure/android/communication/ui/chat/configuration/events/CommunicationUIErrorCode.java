@@ -15,12 +15,6 @@ public final class CommunicationUIErrorCode extends ExpandableStringEnum<Communi
     public static final CommunicationUIErrorCode CHAT_THREAD_ADD_USER = fromString("CHAT_THREAD_ADD_USER");
 
 
-    /**
-     * Creates or finds a CallCompositeErrorCode from its string representation.
-     *
-     * @param name a name to look for.
-     * @return the corresponding CallCompositeErrorCode.
-     */
     private static CommunicationUIErrorCode fromString(final String name) {
         return fromString(name, CommunicationUIErrorCode.class);
     }

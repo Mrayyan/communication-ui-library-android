@@ -44,6 +44,6 @@ class ChatLauncherActivity : AppCompatActivity() {
         }
 
 
-        chatLauncherViewModel.doLaunch()
+        chatLauncherViewModel.doLaunch(this)
     }
 }
