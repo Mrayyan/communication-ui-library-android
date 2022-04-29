@@ -3,7 +3,6 @@
    Licensed under the MIT License.
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.azure.android.communication.ui"
     >
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.BLUETOOTH" />

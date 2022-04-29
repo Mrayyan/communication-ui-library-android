@@ -7,6 +7,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.azure.android.communication.chat.ChatThreadClientBuilder;
+import com.azure.android.communication.ui.telemetry.TelemetryManager;
 
 /**
  * Chat composite
@@ -20,8 +21,13 @@ public final class ChatComposite {
      * @return chat thread ID
      */
     public String startChatThread(final Context context, final ChatOptions chatOptions) {
+
         final ChatThreadClientBuilder chatThreadAsyncClient = new ChatThreadClientBuilder();
+
         Log.d("ChatComposite", "launch-------------------------------");
+
+        TelemetryManager.instance().track("starting", 33);
+
         return "chat_thread_id";
     }
 

@@ -11,6 +11,7 @@ import com.azure.android.communication.ui.calling.configuration.CallCompositeCon
 import com.azure.android.communication.ui.calling.configuration.CallConfiguration;
 import com.azure.android.communication.ui.calling.configuration.CallType;
 import com.azure.android.communication.ui.calling.presentation.CallCompositeActivity;
+import com.azure.android.communication.ui.telemetry.TelemetryManager;
 
 import java.util.UUID;
 
@@ -136,6 +137,9 @@ public final class CallComposite {
             final String meetingLink,
             final CallType callType
     ) {
+
+        TelemetryManager.instance().track("starting CallComposite", 33);
+
         configuration.setCallConfig(new CallConfiguration(
                 communicationTokenCredential,
                 displayName,

@@ -90,20 +90,30 @@ android {
 
     sourceSets {
         calling {
-            java.srcDirs = ['src/main/java','src/calling/java']
+            java.srcDirs = ['src/main/java','src/calling/java','src/telemetryStub/java']
+            res.srcDirs = ['src/main/res','src/calling/res']
+            manifest.srcFile 'src/calling/AndroidManifest.xml'
+        }
+        callingTelemetry {
+            java.srcDirs = ['src/main/java','src/calling/java','src/telemetry/java']
             res.srcDirs = ['src/main/res','src/calling/res']
             manifest.srcFile 'src/calling/AndroidManifest.xml'
         }
         chat {
-            java.srcDirs = ['src/main/java','src/chat/java']
+            java.srcDirs = ['src/main/java','src/chat/java','src/telemetryStub/java']
             res.srcDirs = ['src/main/res','src/chat/res']
             manifest.srcFile 'src/chat/AndroidManifest.xml'
         }
-        callingAndChat {
-            java.srcDirs = ['src/main/java','src/callingAndChat/java']
-            res.srcDirs = ['src/main/res','src/callingAndChat/res']
-            manifest.srcFile 'src/callingAndChat/AndroidManifest.xml'
+        chatTelemetry {
+            java.srcDirs = ['src/main/java','src/chat/java','src/telemetry/java']
+            res.srcDirs = ['src/main/res','src/chat/res']
+            manifest.srcFile 'src/chat/AndroidManifest.xml'
         }
+//        callingAndChat {
+//            java.srcDirs = ['src/main/java','src/callingAndChat/java']
+//            res.srcDirs = ['src/main/res','src/callingAndChat/res']
+//            manifest.srcFile 'src/callingAndChat/AndroidManifest.xml'
+//        }
     }
 
     flavorDimensions "product"//, "distribute"
@@ -124,14 +134,22 @@ android {
             dimension "product"
             matchingFallbacks = ["calling"]
         }
+        callingTelemetry {
+            dimension "product"
+            matchingFallbacks = ["callingTelemetry"]
+        }
         chat {
             dimension "product"
             matchingFallbacks = ["chat"]
         }
-        callingAndChat {
+        chatTelemetry {
             dimension "product"
-            matchingFallbacks = ["callingAndChat"]
+            matchingFallbacks = ["chatTelemetry"]
         }
+//        callingAndChat {
+//            dimension "product"
+//            matchingFallbacks = ["callingAndChat"]
+//        }
     }
     packagingOptions {
         resources.excludes.add("META-INF/*")

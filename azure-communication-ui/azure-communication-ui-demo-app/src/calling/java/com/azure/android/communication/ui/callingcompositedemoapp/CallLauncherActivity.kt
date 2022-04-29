@@ -154,6 +154,7 @@ class CallLauncherActivity : AppCompatActivity() {
         callLauncherViewModel.fetchResult.observe(this) {
             processResult(it)
         }
+        TelemetryConfig.configure()
     }
 
     override fun onResume() {
