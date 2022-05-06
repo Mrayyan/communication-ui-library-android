@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 #export ANDROID_SDK_ROOT=$PWD/android-sdk
 SYS_IMG_TAG=google_apis
 CPU=x86_64
@@ -10,19 +16,36 @@ SYSTEM_IMAGE="system-images;${OS_VERSION};${SYS_IMG_TAG};${CPU}"
 echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install ${SYSTEM_IMAGE}
 
 # Create emulator
-echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin_android_emulator -k ${SYSTEM_IMAGE} --force --device "pixel_xl" --tag "${SYS_IMG_TAG}"
+echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin1 -k ${SYSTEM_IMAGE} --force --device "pixel_xl" --tag "${SYS_IMG_TAG}"
 
 echo "avdmanager successfully created $($ANDROID_HOME/emulator/emulator -list-avds)"
 echo "Starting emulator"
 
-sed -i'' -e "s%android-sdk/system-images/${OS_VERSION}/${SYS_IMG_TAG}/${CPU}/%system-images/${OS_VERSION}/${SYS_IMG_TAG}/${CPU}/%g" ~/.android/avd/xamarin_android_emulator.avd/config.ini
-sed -i'' -e "s%hw.keyboard=no%hw.keyboard=yes%g" ~/.android/avd/xamarin_android_emulator.avd/config.ini
+sed -i'' -e "s%android-sdk/system-images/${OS_VERSION}/${SYS_IMG_TAG}/${CPU}/%system-images/${OS_VERSION}/${SYS_IMG_TAG}/${CPU}/%g" ~/.android/avd/xamarin1.avd/config.ini
+sed -i'' -e "s%hw.keyboard=no%hw.keyboard=yes%g" ~/.android/avd/xamarin1.avd/config.ini
 
 
 #$PWD/android-sdk/platform-tools/adb kill-server
 
 # Start emulator in background 
-$ANDROID_HOME/emulator/emulator @xamarin_android_emulator -no-snapshot -skin 1130x2360 -accel auto -gpu auto -screen touch -camera-back emulated -camera-front emulated -use-host-vulkan -dns-server 8.8.8.8  &
+$ANDROID_HOME/emulator/emulator @xamarin1 -no-snapshot -skin 1130x2360 -accel auto -gpu auto -screen touch -camera-back emulated -camera-front emulated -use-host-vulkan -dns-server 8.8.8.8  &
+
+# Create emulator
+echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin -k ${SYSTEM_IMAGE} --force --device "pixel_xl" --tag "${SYS_IMG_TAG}"
+
+echo "avdmanager successfully created $($ANDROID_HOME/emulator/emulator -list-avds)"
+echo "Starting emulator"
+
+sed -i'' -e "s%android-sdk/system-images/${OS_VERSION}/${SYS_IMG_TAG}/${CPU}/%system-images/${OS_VERSION}/${SYS_IMG_TAG}/${CPU}/%g" ~/.android/avd/xamarin.avd/config.ini
+sed -i'' -e "s%hw.keyboard=no%hw.keyboard=yes%g" ~/.android/avd/xamarin.avd/config.ini
+
+
+#$PWD/android-sdk/platform-tools/adb kill-server
+
+# Start emulator in background 
+$ANDROID_HOME/emulator/emulator @xamarin -no-snapshot -skin 1130x2360 -accel auto -gpu auto -screen touch -camera-back emulated -camera-front emulated -use-host-vulkan -dns-server 8.8.8.8  &
+
+
 $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
 
 $ANDROID_HOME/platform-tools/adb devices

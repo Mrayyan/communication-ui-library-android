@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+export JAVA_HOME=$(/usr/libexec/java_home)
+#export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+
+./runUiTests.sh eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNCIsIng1dCI6IlJDM0NPdTV6UENIWlVKaVBlclM0SUl4Szh3ZyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOmI2YWFkYTFmLTBiMWQtNDdhYy04NjZmLTkxYWFlMDBhMWQwMV8wMDAwMDAxMS0zMjRhLTAyOTMtNzhmZS0zNDNhMGQwMDhhZDAiLCJzY3AiOjE3OTIsImNzaSI6IjE2NTE3MjM3NTUiLCJleHAiOjE2NTE4MTAxNTUsImFjc1Njb3BlIjoidm9pcCIsInJlc291cmNlSWQiOiJiNmFhZGExZi0wYjFkLTQ3YWMtODY2Zi05MWFhZTAwYTFkMDEiLCJpYXQiOjE2NTE3MjM3NTV9.nmAv9dLgEWNwXmPzcjTtiUuIzVXeW15ZcAlRQ_CJ9CbML-T9_hjmPmBwcjk7WqAu71S-3Nwq9dZlu0vGdd3ryncRPAdwXxMQVpQp7QNnZ6rwzYI5R2xaJQSvFXjIIPiUe_R1jB2DyPKa8eSXHpgzMI9K6zKiQzxetYR-K4g7Vsu1mUFTXpSD9HxGtWxpY_KPrHjxuL8Uw4ml9JEee8c1UJjxvaJSqstt0lHqIXe3Z65rWU-6SeV3IJ_edbX5l6CbK9d0YHA3GD9LK1C4iV_ToqDugl9-eqRU6eQffi3fI7BkR64od4FLhISpijteCCOCSPQfWW56cqajlkbmGad5aw https://teams.microsoft.com/l/meetup-join/19%3ameeting_OTgyYWRhZTgtNTA0MS00NjNlLTliMTQtNDJhN2I3YjVmZTM5%40thread.v2/0?context=%7b%22Tid%22%3a%2272f988bf-86f1-41af-91ab-2d7cd011db47%22%2c%22Oid%22%3a%22009cb10a-d33f-4e2f-85eb-249a30042a51%22%7d d047ee00-d86a-11eb-8e92-d7baf38a4ecd

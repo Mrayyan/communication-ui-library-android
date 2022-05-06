@@ -26,17 +26,23 @@ class CallingCompositeBaselineUiTest : BaseUiTest() {
 
     @Test
     fun testJoinTeamsCallWithVideoDisabled() {
-        joinTeamsCall(false)
+        //joinTeamsCall(false)
     }
 
     @Test
     fun testJoinGroupCallWithVideoDisabled() {
-        joinGroupCall(false)
+        //joinGroupCall(false)
     }
 
     @Test
     fun testJoinGroupCallWithVideoEnabled() {
         joinGroupCall()
+    }
+
+    @Test
+    fun testJoinGroupCall() {
+        joinGroupCallNoExit()
+        Thread.sleep(300000)
     }
 
     private fun joinTeamsCall(videoEnabled: Boolean = true) {
@@ -56,6 +62,18 @@ class CallingCompositeBaselineUiTest : BaseUiTest() {
             .clickLeaveCall()
     }
 
+    private fun joinGroupCallNoExit(videoEnabled: Boolean = true) {
+        val setupScreen = HomeScreenRobot()
+            .setGroupIdOrTeamsMeetingUrl(TestFixture.groupId)
+            .setAcsToken(TestFixture.acsToken)
+            .clickLaunchButton()
+
+        if (videoEnabled) {
+            setupScreen.turnCameraOn()
+        }
+        val callScreen = setupScreen.clickJoinCallButton()
+    }
+
     private fun joinGroupCall(videoEnabled: Boolean = true) {
         val setupScreen = HomeScreenRobot()
             .setGroupIdOrTeamsMeetingUrl(TestFixture.groupId)
@@ -71,6 +89,6 @@ class CallingCompositeBaselineUiTest : BaseUiTest() {
             .checkParticipantList()
             .dismissParticipantList()
             .clickEndCall()
-            .clickLeaveCall()
+        Thread.sleep(15000)
     }
 }

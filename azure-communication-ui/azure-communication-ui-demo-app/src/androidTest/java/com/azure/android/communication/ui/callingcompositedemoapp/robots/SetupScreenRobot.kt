@@ -80,11 +80,12 @@ class SetupScreenRobot : ScreenRobot<SetupScreenRobot>() {
 
             val cameraButtonText =
                 getTextFromButtonView(R.id.azure_communication_ui_setup_camera_button)
+
             if (cameraButtonText == "Video off") {
-                clickViewWithIdAndText(
+               /* clickViewWithIdAndText(
                     R.id.azure_communication_ui_setup_camera_button,
                     "Video off"
-                )
+                )*/
             }
 
             waitUntilViewIdIsDisplayed(
