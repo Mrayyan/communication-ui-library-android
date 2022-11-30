@@ -81,6 +81,7 @@ internal class MessageRepositoryMiddlewareImpl(
         dispatch: Dispatch,
     ) {
         messageRepository.addLocalMessage(action.messageInfoModel)
+        //TODO: Update message send status here
         notifyUpdate(dispatch)
     }
 

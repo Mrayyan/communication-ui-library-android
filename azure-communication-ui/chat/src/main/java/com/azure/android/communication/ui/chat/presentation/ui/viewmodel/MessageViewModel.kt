@@ -7,6 +7,7 @@ import android.content.Context
 import com.azure.android.communication.ui.chat.R
 import com.azure.android.communication.ui.chat.models.EMPTY_MESSAGE_INFO_MODEL
 import com.azure.android.communication.ui.chat.models.MessageInfoModel
+import com.azure.android.communication.ui.chat.models.MessageStatus
 import com.azure.android.communication.ui.chat.utilities.findMessageIdxById
 import com.azure.android.core.rest.annotation.Immutable
 import org.threeten.bp.OffsetDateTime
@@ -23,7 +24,8 @@ internal class MessageViewModel(
     val showTime: Boolean,
     val dateHeaderText: String?,
     val isLocalUser: Boolean,
-    val isRead: Boolean,
+    val showMessageSendStatusIcon: Boolean,
+    val messageStatus: MessageStatus?,
 )
 
 internal fun List<MessageInfoModel>.toViewModelList(
@@ -46,6 +48,8 @@ private class InfoModelToViewModelAdapter(
 ) :
     List<MessageViewModel> {
 
+    var lastReadMessageFound = false
+
     override fun get(index: Int): MessageViewModel {
         // Generate Message View Model here
 
@@ -54,11 +58,58 @@ private class InfoModelToViewModelAdapter(
         } catch (e: IndexOutOfBoundsException) {
             EMPTY_MESSAGE_INFO_MODEL
         }
-//        val lastLocalUserMessage =
+
+        //Index is from bottom to top
+        //This message is the latest message
+
         val thisMessage = messages[index]
+
         val isLocalUser =
             thisMessage.senderCommunicationIdentifier?.id == localUserIdentifier || thisMessage.isCurrentUser
         val currentMessageTime = thisMessage.editedOn ?: thisMessage.createdOn
+
+
+        /*
+        *
+        * Here are the requirements:
+        *
+        * if (msgFromLocalUser && latestMessage){
+        * switch
+        * case 1 (latestMessage == read) -> show read Icon.
+        * }
+        * latest message has been read and is not
+        *
+        * How to check if the message is the latest message?
+        *
+        * Get last screen message - show read receipt
+        * For the thisMessage, if it is not isread, show the sent/unsent icon
+        * Failed icon for all failed messages.
+        *
+        * Should shoe icon -- true, false only when read receipt shown once
+        *
+        * We will display the read receipt icon on the last seen message,
+        * and either unsent or sent icon for the last unsent/sent message,
+        * and failed icon for all failed messages
+
+        *
+        *
+        *
+        * Scenario 1) latest message is read
+        * Scenario 2) 3rd latest message is read, the rest are sent
+        * -> If current msg time is outside the read receipt and this is from local user, false
+        *
+        * Screnario 3) no message has been read, only sent
+        *
+        * */
+
+        val isRead = isLocalUser && (currentMessageTime != null && currentMessageTime <= latestReadMessageTimestamp)
+
+        if (!lastReadMessageFound){
+            lastReadMessageFound = isRead
+        } else {
+            //Don't isRead Icon...
+        }
+
         return MessageViewModel(
 
             messages[index],
@@ -80,8 +131,13 @@ private class InfoModelToViewModelAdapter(
             ),
 
             isLocalUser = isLocalUser,
-            isRead = isLocalUser && (currentMessageTime != null && currentMessageTime <= latestReadMessageTimestamp)
+            //Only show this icon on the latest message
+            //TODO: Change this to show. If last read message and latest message are not the same, show the icon
+            showMessageSendStatusIcon = shouldMessageStatusIconBeShown(thisMessage),
+            messageStatus = thisMessage.sendStatus
         )
+
+
     }
 
     private fun buildDateHeader(
@@ -109,6 +165,24 @@ private class InfoModelToViewModelAdapter(
         } else {
             return null
         }
+    }
+
+    private fun shouldMessageStatusIconBeShown(currentMessage: MessageInfoModel, isRead: Boolean): Boolean {
+        /*
+        *
+        * return true
+        * but if read receipt has been shown, it shhould be false otheriwe s
+        *
+        *
+        * */
+
+
+        if (currentMessage.sendStatus == MessageStatus.FAILED) {
+            return true
+        } else if (isRead) {
+            //check if
+            return true
+        } else if ()
     }
 
     // Rest of List Implementation

@@ -5,6 +5,7 @@ package com.azure.android.communication.ui.chat.redux.middleware.sdk
 
 import com.azure.android.communication.ui.chat.error.ChatStateError
 import com.azure.android.communication.ui.chat.error.ErrorCode
+import com.azure.android.communication.ui.chat.models.MessageStatus
 import com.azure.android.communication.ui.chat.redux.Dispatch
 import com.azure.android.communication.ui.chat.redux.action.Action
 import com.azure.android.communication.ui.chat.redux.action.ChatAction
@@ -86,18 +87,31 @@ internal class ChatActionHandler(private val chatService: ChatService) {
             if (error != null) {
                 // TODO: lets use only one action and state to fire error for timing
                 // TODO: while working on error stories, we can create separate states for every error
+
+
+                //TODO: Dispatch the message failed action here
+                dispatch(ChatAction.MessageFailed(messageInfoModel = action.messageInfoModel.copy(
+                    id = action.messageInfoModel.id,
+                    sendStatus = MessageStatus.FAILED,
+                    )
+                ))
+
                 dispatch(
                     ErrorAction.ChatStateErrorOccurred(
                         chatStateError = ChatStateError(
                             errorCode = ErrorCode.CHAT_SEND_MESSAGE_FAILED
-                        )
-                    )
-                )
+                        ),
+                    ))
+
+
+                //Question: where do we know message in not sent and not failed
+
             } else {
                 dispatch(
                     ChatAction.MessageSent(
                         messageInfoModel = action.messageInfoModel.copy(
                             id = result.id,
+                            sendStatus = MessageStatus.SENT,
                         )
                     )
                 )

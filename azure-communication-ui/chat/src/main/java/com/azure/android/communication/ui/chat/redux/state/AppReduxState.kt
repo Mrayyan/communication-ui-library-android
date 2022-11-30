@@ -24,7 +24,8 @@ internal class AppReduxState(
             threadId = threadID,
             topic = null,
             allMessagesFetched = false,
-            isThreadDeleted = false
+            isThreadDeleted = false,
+
         ),
         lastReadMessageId = "",
         lastSendMessageId = "",
